@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_tecnica/presentation/screens/counter_function_screen.dart';
+import 'package:prueba_tecnica/card/card_product.dart';
+// import 'package:prueba_tecnica/presentation/screens/counter_function_screen.dart';
 // import 'package:prueba_tecnica/presentation/screens/counter_screen.dart';
 
 class MyApp extends StatefulWidget {
@@ -17,8 +18,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.red),
-      home: CounterFunctionScreen(),
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+      home: CardProduct(),
     );
   }
 }
