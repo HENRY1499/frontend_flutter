@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_tecnica/card/card_product.dart';
+// import 'package:prueba_tecnica/card/card_product.dart';
+import 'package:prueba_tecnica/presentation/screens/Product.dart';
 // import 'package:prueba_tecnica/presentation/screens/counter_function_screen.dart';
 // import 'package:prueba_tecnica/presentation/screens/counter_screen.dart';
 
@@ -19,7 +20,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
-      home: CardProduct(),
+      home: Product(),
     );
   }
 }
