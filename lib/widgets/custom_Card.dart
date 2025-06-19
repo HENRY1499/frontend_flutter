@@ -6,7 +6,7 @@ class CustomCard extends StatefulWidget {
   final int number;
   final Color color;
   final IconData icon;
-  final Widget image;
+  final String image;
 
   const CustomCard({
     required this.name,

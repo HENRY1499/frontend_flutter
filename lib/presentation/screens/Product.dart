@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_tecnica/widgets/customCard.dart';
+import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
 
 class Product extends StatefulWidget {
   const Product({super.key});
@@ -10,6 +10,15 @@ class Product extends StatefulWidget {
 
 class _ProductState extends State<Product> {
   bool isExpanded = false;
+  int selectedIndex = 0;
+  final List<String> categories = [
+    "Calzado",
+    "Ropa",
+    "Accesorios",
+    "Tecnología",
+    "Hogar",
+    "Deportes",
+  ];
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -17,7 +26,7 @@ class _ProductState extends State<Product> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(60.0),
         child: AppBar(
-          backgroundColor: const Color(0xff5A3D29),
+          backgroundColor: Colors.grey[400],
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -30,7 +39,7 @@ class _ProductState extends State<Product> {
                     },
                   ),
                   Text(
-                    "Hola",
+                    "Productos",
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
@@ -78,8 +87,7 @@ class _ProductState extends State<Product> {
           ),
         ),
       ),
-      body: Container(
-        padding: EdgeInsets.all(10.0),
+      body: SizedBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -87,37 +95,74 @@ class _ProductState extends State<Product> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CustomCard(
-                    name: "Producto",
-                    description: "description",
-                    number: 1,
-                    color: Colors.red,
-                    icon: Icons.shopping_cart,
-                    image: Image.asset("assets/images/product.png"),
-                  ),
-                  CustomCard(
-                    name: "Producto",
-                    description: "description",
-                    number: 1,
-                    color: Colors.red,
-                    icon: Icons.shopping_cart,
-                    image: Image.asset("assets/images/product.png"),
-                  ),
-                  CustomCard(
-                    name: "Producto",
-                    description: "description",
-                    number: 1,
-                    color: Colors.red,
-                    icon: Icons.shopping_cart,
-                    image: Image.asset("assets/images/product.png"),
-                  ),
-                ],
+                children: List.generate(categories.length, (index) {
+                  return CustomButton(
+                    name: categories[index],
+                    height: 30,
+                    color: Colors.white,
+                    textColor: Colors.black,
+                    isPressed: selectedIndex == index,
+                    onTap: () {
+                      setState(() {
+                        selectedIndex =
+                            index; // Actualiza el índice del botón activo
+                      });
+                    },
+                  );
+                }),
               ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 5.0,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Colors.black),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: _TitleCard(title: "Calzado"),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _TitleCard extends StatefulWidget {
+  final String title;
+  const _TitleCard({super.key, required this.title});
+
+  @override
+  State<_TitleCard> createState() => __TitleCardState();
+}
+
+class __TitleCardState extends State<_TitleCard> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          widget.title,
+          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w200),
+        ),
+        CustomButton(
+          name: "Ver más",
+          height: 20,
+          onTap: () {},
+          textColor: Colors.white,
+          radius: BorderRadius.all(Radius.circular(100)),
+          color: Colors.blue,
+          fontSize: 12.0,
+          isPressed: false,
+        ),
+      ],
     );
   }
 }

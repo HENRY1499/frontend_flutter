@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_tecnica/widgets/customCard.dart';
+import 'package:prueba_tecnica/widgets/custom_Card.dart';
 
 class CardProduct extends StatefulWidget {
   const CardProduct({super.key});
