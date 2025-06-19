@@ -12,12 +12,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String name = "Henry";
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Demo',
+      title: 'Prueba Tecnica',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
       home: Product(),

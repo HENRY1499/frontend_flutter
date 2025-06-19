@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_tecnica/widgets/customButtom.dart';
 
 class Product extends StatefulWidget {
   const Product({super.key});
@@ -53,6 +54,23 @@ class _ProductState extends State<Product> {
               },
             ),
           ),
+        ),
+      ),
+      body: SizedBox(
+        width: double.infinity,
+        height: double.minPositive,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                CustomButton(name: 'Botón 1'),
+                CustomButton(name: 'Botón 2'),
+              ],
+            ),
+          ],
         ),
       ),
     );
