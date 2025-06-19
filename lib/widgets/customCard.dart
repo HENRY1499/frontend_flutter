@@ -6,7 +6,7 @@ class CustomCard extends StatefulWidget {
   final int number;
   final Color color;
   final IconData icon;
-  final String image;
+  final Widget image;
 
   const CustomCard({
     required this.name,
@@ -60,7 +60,7 @@ class _CustomCardState extends State<CustomCard> {
                 ),
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: NetworkImage(widget.image),
+                  backgroundImage: AssetImage(widget.image.toString()),
                   // child: Icon(widget.icon, size: 30, color: Colors.white),
                 ),
               ],

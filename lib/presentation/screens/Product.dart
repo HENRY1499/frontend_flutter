@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_tecnica/widgets/customCard.dart';
 
 class Product extends StatefulWidget {
   const Product({super.key});
@@ -75,6 +76,46 @@ class _ProductState extends State<Product> {
               ),
             ],
           ),
+        ),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CustomCard(
+                    name: "Producto",
+                    description: "description",
+                    number: 1,
+                    color: Colors.red,
+                    icon: Icons.shopping_cart,
+                    image: Image.asset("assets/images/product.png"),
+                  ),
+                  CustomCard(
+                    name: "Producto",
+                    description: "description",
+                    number: 1,
+                    color: Colors.red,
+                    icon: Icons.shopping_cart,
+                    image: Image.asset("assets/images/product.png"),
+                  ),
+                  CustomCard(
+                    name: "Producto",
+                    description: "description",
+                    number: 1,
+                    color: Colors.red,
+                    icon: Icons.shopping_cart,
+                    image: Image.asset("assets/images/product.png"),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
