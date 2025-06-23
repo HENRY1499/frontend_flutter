@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
+import 'package:prueba_tecnica/widgets/custom_Product.dart';
 
 class Product extends StatefulWidget {
   const Product({super.key});
@@ -90,6 +91,7 @@ class _ProductState extends State<Product> {
       body: SizedBox(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
+          spacing: 8.0,
           children: [
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -98,7 +100,7 @@ class _ProductState extends State<Product> {
                 children: List.generate(categories.length, (index) {
                   return CustomButton(
                     name: categories[index],
-                    height: 30,
+                    height: 40,
                     color: Colors.white,
                     textColor: Colors.black,
                     isPressed: selectedIndex == index,
@@ -114,15 +116,65 @@ class _ProductState extends State<Product> {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 5.0,
+              spacing: 8.0,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: Colors.black),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Calzado", style: TextStyle(fontSize: 18)),
+                      CustomButton(
+                        name: "Ver más",
+                        color: Colors.blueAccent,
+                        radius: BorderRadius.all(Radius.circular(100)),
+                        textColor: Colors.white,
+                        isPressed: false,
+                        height: 25,
+                      ),
+                    ],
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: _TitleCard(title: "Calzado"),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 4.0,
+                      vertical: 2.0,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
+                      // crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        CustomTargetProduct(
+                          price: 10.00,
+                          name: "Aceite",
+                          details: "Aceite Primor de 900ml",
+                        ),
+                        CustomTargetProduct(
+                          price: 1.00,
+                          name: "Oreo",
+                          details: "Oreo Taco",
+                        ),
+                        CustomTargetProduct(
+                          price: 0.60,
+                          name: "Rellenita",
+                          details: "Rellenita de Fresa",
+                        ),
+                        CustomTargetProduct(
+                          price: 0.50,
+                          name: "Velas",
+                          details: "Se te fue la luz?.",
+                        ),
+                        CustomTargetProduct(
+                          price: 1.50,
+                          name: "Trident",
+                          details: "Cantidad 12 Trident de sabor Mora.",
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
