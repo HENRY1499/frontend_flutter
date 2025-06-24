@@ -31,7 +31,7 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
           ), // <-- Agrega esto
           decoration: BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(12), // <-- Muy recomendable
+            borderRadius: BorderRadius.circular(10), // <-- Muy recomendable
             boxShadow: [
               BoxShadow(
                 color: const Color(0xFFC1C1C1),

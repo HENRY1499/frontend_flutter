@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_tecnica/features/products/widgets/target_product.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
 import 'package:prueba_tecnica/widgets/custom_Product.dart';
 
@@ -148,31 +149,32 @@ class _ProductState extends State<Product> {
 
                       // crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        CustomTargetProduct(
-                          price: 10.00,
-                          name: "Aceite",
-                          details: "Aceite Primor de 900ml",
-                        ),
-                        CustomTargetProduct(
-                          price: 1.00,
-                          name: "Oreo",
-                          details: "Oreo Taco",
-                        ),
-                        CustomTargetProduct(
-                          price: 0.60,
-                          name: "Rellenita",
-                          details: "Rellenita de Fresa",
-                        ),
-                        CustomTargetProduct(
-                          price: 0.50,
-                          name: "Velas",
-                          details: "Se te fue la luz?.",
-                        ),
-                        CustomTargetProduct(
-                          price: 1.50,
-                          name: "Trident",
-                          details: "Cantidad 12 Trident de sabor Mora.",
-                        ),
+                        TargetProduct(),
+                        // CustomTargetProduct(
+                        //   price: 10.00,
+                        //   name: "Aceite",
+                        //   details: "Aceite Primor de 900ml",
+                        // ),
+                        // CustomTargetProduct(
+                        //   price: 1.00,
+                        //   name: "Oreo",
+                        //   details: "Oreo Taco",
+                        // ),
+                        // CustomTargetProduct(
+                        //   price: 0.60,
+                        //   name: "Rellenita",
+                        //   details: "Rellenita de Fresa",
+                        // ),
+                        // CustomTargetProduct(
+                        //   price: 0.50,
+                        //   name: "Velas",
+                        //   details: "Se te fue la luz?.",
+                        // ),
+                        // CustomTargetProduct(
+                        //   price: 1.50,
+                        //   name: "Trident",
+                        //   details: "Cantidad 12 Trident de sabor Mora.",
+                        // ),
                       ],
                     ),
                   ),

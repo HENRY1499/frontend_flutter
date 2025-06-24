@@ -23,10 +23,10 @@ class CustomButton extends StatefulWidget {
   });
 
   @override
-  State<CustomButton> createState() => _CustomButtonState();
+  State<CustomButton> createState() => _CustomButton();
 }
 
-class _CustomButtonState extends State<CustomButton> {
+class _CustomButton extends State<CustomButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -34,7 +34,7 @@ class _CustomButtonState extends State<CustomButton> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.linear,
-        width: 100,
+        width: 80,
         height: widget.height.toDouble(),
         margin: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
