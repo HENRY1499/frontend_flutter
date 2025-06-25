@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_tecnica/features/products/widgets/add_product.dart';
 
 class TargetProduct extends StatefulWidget {
   const TargetProduct({super.key});
@@ -11,12 +12,16 @@ class _TargetProductState extends State<TargetProduct> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none, // <-- permite que el botón sobresalga
       children: [
         GestureDetector(
           onTap: () => print("Detalle de este producto"),
           child: AnimatedContainer(
             duration: Duration(milliseconds: 2000),
             curve: Curves.linear,
+            constraints: BoxConstraints(minWidth: 100, maxWidth: 150),
+            height: 200,
+            margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 7.0),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -30,14 +35,18 @@ class _TargetProductState extends State<TargetProduct> {
               ],
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset('assets/images/product.png', fit: BoxFit.cover),
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 4.0,
-                    horizontal: 16.0,
+                SizedBox(
+                  width: 150,
+                  child: Image.asset(
+                    'assets/images/product.png',
+                    fit: BoxFit.cover,
                   ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(4),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -74,10 +83,7 @@ class _TargetProductState extends State<TargetProduct> {
             ),
           ),
         ),
-        Positioned(
-          top: 0,
-          right: 0,
-          child: Icon(Icons.plus_one)),
+        Positioned(top: -5, right: 0, child: AddProduct()),
       ],
     );
   }

@@ -144,38 +144,46 @@ class _ProductState extends State<Product> {
                       horizontal: 4.0,
                       vertical: 2.0,
                     ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-
-                      // crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        TargetProduct(),
-                        // CustomTargetProduct(
-                        //   price: 10.00,
-                        //   name: "Aceite",
-                        //   details: "Aceite Primor de 900ml",
-                        // ),
-                        // CustomTargetProduct(
-                        //   price: 1.00,
-                        //   name: "Oreo",
-                        //   details: "Oreo Taco",
-                        // ),
-                        // CustomTargetProduct(
-                        //   price: 0.60,
-                        //   name: "Rellenita",
-                        //   details: "Rellenita de Fresa",
-                        // ),
-                        // CustomTargetProduct(
-                        //   price: 0.50,
-                        //   name: "Velas",
-                        //   details: "Se te fue la luz?.",
-                        // ),
-                        // CustomTargetProduct(
-                        //   price: 1.50,
-                        //   name: "Trident",
-                        //   details: "Cantidad 12 Trident de sabor Mora.",
-                        // ),
-                      ],
+                    child: SizedBox(
+                      width: 500,
+                      height: 300,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          TargetProduct(),
+                          CustomTargetProduct(
+                            price: 10.00,
+                            name: "Galletas",
+                            details: "Galleta de sabor fresa",
+                          ),
+                          // CustomTargetProduct(
+                          //   price: 10.00,
+                          //   name: "Aceite",
+                          //   details: "Aceite Primor de 900ml",
+                          // ),
+                          // CustomTargetProduct(
+                          //   price: 1.00,
+                          //   name: "Oreo",
+                          //   details: "Oreo Taco",
+                          // ),
+                          // CustomTargetProduct(
+                          //   price: 0.60,
+                          //   name: "Rellenita",
+                          //   details: "Rellenita de Fresa",
+                          // ),
+                          // CustomTargetProduct(
+                          //   price: 0.50,
+                          //   name: "Velas",
+                          //   details: "Se te fue la luz?.",
+                          // ),
+                          // CustomTargetProduct(
+                          //   price: 1.50,
+                          //   name: "Trident",
+                          //   details: "Cantidad 12 Trident de sabor Mora.",
+                          // ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

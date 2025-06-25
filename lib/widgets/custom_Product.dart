@@ -19,6 +19,7 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      clipBehavior: Clip.none, // <-- permite que el botón sobresalga
       children: [
         AnimatedContainer(
           duration: Duration(milliseconds: 200),
@@ -52,9 +53,9 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 8.0),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  spacing: 4.0,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  spacing: 2.0,
                   children: [
                     Text(
                       widget.name,
