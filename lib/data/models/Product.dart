@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:json_annotation/json_annotation.dart';
 import 'package:prueba_tecnica/data/models/Category.dart';
 
@@ -15,10 +17,8 @@ class Product {
   final double purchasePrice;
   final int stock;
   final Category category;
-  final int status;
-  final int createdat;
-  final int updatedat;
-
+  final String status;
+  final DateTime? createdat;
   Product({
     required this.pid,
     required this.name,
@@ -29,7 +29,6 @@ class Product {
     required this.category,
     required this.status,
     required this.createdat,
-    required this.updatedat,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) =>

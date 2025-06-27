@@ -7,16 +7,17 @@ part of 'Product.dart';
 // **************************************************************************
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-  pid: (json['id_product'] as num).toInt(),
+  pid: int.tryParse(json['id_product'].toString()) ?? 0,
   name: json['name'] as String,
   description: json['description'] as String,
-  salesPrice: (json['sales_price'] as num).toDouble(),
-  purchasePrice: (json['purchase_price'] as num).toDouble(),
-  stock: (json['stock'] as num).toInt(),
+  salesPrice: double.tryParse(json['sales_price'].toString()) ?? 0.0,
+  purchasePrice: double.tryParse(json['purchase_price'].toString()) ?? 0.0,
+  stock: int.tryParse(json['stock'].toString()) ?? 0,
   category: Category.fromJson(json['category'] as Map<String, dynamic>),
-  status: (json['status'] as num).toInt(),
-  createdat: (json['createdat'] as num).toInt(),
-  updatedat: (json['updatedat'] as num).toInt(),
+  status: json['status'].toString(),
+  createdat: json['createdat'] != null
+      ? DateTime.tryParse(json['createdat'])
+      : null,
 );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -28,6 +29,5 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
   'stock': instance.stock,
   'category': instance.category,
   'status': instance.status,
-  'createdat': instance.createdat,
-  'updatedat': instance.updatedat,
+  'createdat': instance.createdat?.toIso8601String(),
 };

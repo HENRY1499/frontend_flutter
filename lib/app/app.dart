@@ -18,6 +18,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Prueba Tecnica',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+      themeMode: ThemeMode.light,
       home: Product(),
     );
   }

@@ -1,10 +1,12 @@
 import 'package:prueba_tecnica/data/services/ProductServices.dart';
 import 'package:prueba_tecnica/data/models/Product.dart';
 
-class Repositoryproduct {
+class RepositoryProduct {
   final ProductServices productServices;
 
-  Repositoryproduct(this.productServices);
+  RepositoryProduct(this.productServices);
 
-  Future<List<Product>> fetchAllProduct() => productServices.getProduct();
+  Future<List<Product>> fetchProduct() async {
+    return await productServices.getProducts();
+  }
 }
