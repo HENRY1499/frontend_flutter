@@ -11,7 +11,6 @@ class ProductController {
       final data = await repository.fetchProduct();
       return data;
     } catch (e) {
-      print('error en el controlador...:$e');
       throw Exception('Error al obtener productos: $e');
     }
   }

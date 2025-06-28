@@ -18,8 +18,8 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
       children: [
         Container(
           margin: EdgeInsets.symmetric(
-            vertical: 4.0,
-            horizontal: 2.0,
+            vertical: 2.0,
+            horizontal: .0,
           ), // <-- Agrega esto
           decoration: BoxDecoration(
             color: Colors.white,
@@ -49,7 +49,7 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
                 ),
               ),
               Flexible(
-                flex: 3,
+                flex: 2,
                 child: Padding(
                   padding: EdgeInsets.all(4.0),
                   child: Column(
@@ -59,7 +59,7 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
                       Text(
                         widget.product.name,
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 14,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -72,7 +72,7 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
                         style: TextStyle(
                           fontSize: 10.0,
                           color: Colors.grey,
-                          fontWeight: FontWeight.w200,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ],

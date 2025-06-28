@@ -9,12 +9,12 @@ class ProductGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: EdgeInsets.all(2),
+      padding: EdgeInsets.all(15),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
+        crossAxisCount: 2,
         childAspectRatio: 1 / 1.5,
-        crossAxisSpacing: 2.0,
-        mainAxisSpacing: 2.0,
+        crossAxisSpacing: 20.0,
+        mainAxisSpacing: 20.0,
       ),
       itemCount: products.length,
       itemBuilder: (context, index) {
