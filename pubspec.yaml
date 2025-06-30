@@ -48,6 +48,7 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   json_serializable: ^6.7.1
   flutter_native_splash: ^2.4.0
+  flutter_riverpod: ^2.5.1
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -60,6 +61,25 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Light.ttf
+          weight: 100
+        - asset: assets/fonts/Montserrat-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Montserrat-Medium.ttf
+          weight: 300
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
+          weight: 400
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Montserrat-Bold.ttf
+          weight: 800
+        - asset: assets/fonts/Montserrat-ExtraBold.ttf
+          weight: 900
+
 flutter_native_splash:
   color: "#40C4FF"                # celeste de fondo
   android: true

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_tecnica/features/home/screen/home_screen.dart';
 // import 'package:prueba_tecnica/card/card_product.dart';
-import 'package:prueba_tecnica/features/products/screen/Product.dart';
+// import 'package:prueba_tecnica/features/products/screen/Product.dart';
 // import 'package:prueba_tecnica/presentation/screens/counter_function_screen.dart';
 // import 'package:prueba_tecnica/presentation/screens/counter_screen.dart';
 
@@ -19,7 +20,10 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
       themeMode: ThemeMode.light,
-      home: Product(),
+      initialRoute: '/',
+      routes: {
+        '/':(context)=>const HomeScreen(),
+      },
     );
   }
 }

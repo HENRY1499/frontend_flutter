@@ -16,10 +16,7 @@ class MyWidget extends StatelessWidget {
             margin: EdgeInsets.all(8),
             color: const Color(0xFF40C4FF), // celeste
             child: Center(
-              child: Image.asset(
-                "/assets/screensplash.png",
-                fit: BoxFit.contain,
-              ),
+              child: Image.asset("/assets/screensplash.png", fit: BoxFit.cover),
             ),
           ),
         ),
