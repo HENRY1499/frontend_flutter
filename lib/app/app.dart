@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_tecnica/features/home/screen/home_screen.dart';
-// import 'package:prueba_tecnica/card/card_product.dart';
-// import 'package:prueba_tecnica/features/products/screen/Product.dart';
-// import 'package:prueba_tecnica/presentation/screens/counter_function_screen.dart';
-// import 'package:prueba_tecnica/presentation/screens/counter_screen.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -18,12 +15,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Prueba Tecnica',
       debugShowCheckedModeBanner: false,
+      locale: const Locale('es'),
+      supportedLocales: const [Locale('es')],
+      localizationsDelegates: GlobalMaterialLocalizations.delegates,
       theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
       themeMode: ThemeMode.light,
       initialRoute: '/',
-      routes: {
-        '/':(context)=>const HomeScreen(),
-      },
+      routes: {'/': (context) => const HomeScreen()},
     );
   }
 }
