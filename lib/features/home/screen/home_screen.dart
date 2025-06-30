@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/features/home/widgets/total_price.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
+import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -22,6 +23,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final product = ref.watch(productProvider);
+    final present = DateTime.now;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -88,10 +90,20 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
             ),
           ],
         ),
-        // leading: Icon(Icons.shopping_bag, color: Colors.white),
-        // title: Text("Tienda", style: TextStyle(color: Colors.white)),
       ),
-      body: TotalPrice(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          TotalPrice(),
+          CustomButton(
+            name: "Comenzar Ventas",
+            color: Colors.green,
+            textColor: Colors.white,
+            isPressed: false,
+            radius: BorderRadius.circular(4),
+          ),
+        ],
+      ),
     );
   }
 }

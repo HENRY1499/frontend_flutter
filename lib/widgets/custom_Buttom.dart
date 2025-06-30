@@ -5,7 +5,6 @@ class CustomButton extends StatefulWidget {
   final bool isPressed;
   final BorderRadius? radius;
   final Color color;
-  final int height;
   final Color? textColor;
   final double? fontSize;
   final VoidCallback? onTap;
@@ -19,7 +18,6 @@ class CustomButton extends StatefulWidget {
     required this.isPressed,
     this.radius,
     this.textColor,
-    required this.height,
   });
 
   @override
@@ -34,10 +32,11 @@ class _CustomButton extends State<CustomButton> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.linear,
-        width: 80,
-        height: widget.height.toDouble(),
+        width: 250,
+        padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 0),
         margin: const EdgeInsets.symmetric(horizontal: 2),
         decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
           border:
               widget.isPressed
                   ? Border(bottom: BorderSide(width: 1, color: Colors.grey))
@@ -51,6 +50,8 @@ class _CustomButton extends State<CustomButton> {
             style: TextStyle(
               color: widget.textColor,
               fontSize: widget.fontSize,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w600,
             ),
           ),
         ),
