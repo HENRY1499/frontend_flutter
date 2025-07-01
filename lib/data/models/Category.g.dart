@@ -11,6 +11,10 @@ Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
   name: json['name'] as String,
   image: json['image'] as String?,
   status: (json['status'] as num?)?.toInt(),
+  createdat:
+      json['createdat'] == null
+          ? null
+          : DateTime.parse(json['createdat'] as String),
 );
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
@@ -18,4 +22,5 @@ Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
   'name': instance.name,
   'image': instance.image,
   'status': instance.status,
+  'createdat': instance.createdat?.toIso8601String(),
 };

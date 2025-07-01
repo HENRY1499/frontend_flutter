@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:prueba_tecnica/data/models/Product.dart';
 import 'package:prueba_tecnica/data/models/Sales.dart';
 
-part 'Product.g.dart';
+part 'SalesDetails.g.dart';
 
 @JsonSerializable()
 class Salesdetails {
@@ -17,6 +17,7 @@ class Salesdetails {
   final double salesPrice;
   @JsonKey(name: 'pay_method')
   final String payMethod;
+  final DateTime? createdat;
 
   Salesdetails({
     required this.deid,
@@ -26,5 +27,10 @@ class Salesdetails {
     required this.subtotal,
     required this.salesPrice,
     required this.payMethod,
+    required this.createdat,
   });
+  factory Salesdetails.fromJson(Map<String, dynamic> json) =>
+      _$SalesdetailsFromJson(json);
+
+  Map<String, dynamic> toJson() => _$SalesdetailsToJson(this);
 }

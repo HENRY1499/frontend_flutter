@@ -64,7 +64,7 @@ class _CustomTargetProductState extends State<CustomTargetProduct> {
                         ),
                       ),
                       Text(
-                        'S/. ${widget.product.salesPrice.toStringAsFixed(2)}',
+                        'S/. ${widget.product.salesPrice}',
                         style: TextStyle(color: Colors.black, fontSize: 10.0),
                       ),
                       Text(

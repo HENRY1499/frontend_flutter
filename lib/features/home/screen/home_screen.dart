@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/features/home/widgets/total_price.dart';
+import 'package:prueba_tecnica/features/products/widgets/filter_products.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
 
@@ -102,7 +103,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
             isPressed: false,
             radius: BorderRadius.circular(4),
           ),
-          
+          FilterProducts(),
         ],
       ),
     );

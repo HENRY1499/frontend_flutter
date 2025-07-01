@@ -12,9 +12,9 @@ class Product {
   final String name;
   final String description;
   @JsonKey(name: 'sales_price')
-  final double salesPrice;
+  final String salesPrice;
   @JsonKey(name: 'purchase_price')
-  final double purchasePrice;
+  final String purchasePrice;
   final int stock;
   final Category category;
   final String status;

@@ -9,8 +9,15 @@ class Category {
   final String name;
   final String? image;
   final int? status;
+  final DateTime? createdat;
 
-  Category({this.cid, required this.name, this.image, this.status});
+  Category({
+    this.cid,
+    required this.name,
+    this.image,
+    this.status,
+    this.createdat,
+  });
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
