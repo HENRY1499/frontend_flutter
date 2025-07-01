@@ -5,6 +5,7 @@ class CustomButton extends StatefulWidget {
   final bool isPressed;
   final BorderRadius? radius;
   final Color color;
+  final double? height;
   final Color? textColor;
   final double? fontSize;
   final VoidCallback? onTap;
@@ -13,6 +14,7 @@ class CustomButton extends StatefulWidget {
     super.key,
     required this.name,
     this.onTap,
+    this.height,
     this.fontSize,
     required this.color,
     required this.isPressed,
