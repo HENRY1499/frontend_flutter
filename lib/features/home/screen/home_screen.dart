@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prueba_tecnica/features/home/screen/products_screen.dart';
 import 'package:prueba_tecnica/features/home/widgets/total_price.dart';
 import 'package:prueba_tecnica/features/products/widgets/filter_products.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
@@ -23,8 +24,6 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final product = ref.watch(productProvider);
-    final present = DateTime.now;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -92,19 +91,28 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
           ],
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          TotalPrice(),
-          CustomButton(
-            name: "Comenzar Ventas",
-            color: Colors.green,
-            textColor: Colors.white,
-            isPressed: false,
-            radius: BorderRadius.circular(4),
-          ),
-          FilterProducts(),
-        ],
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            TotalPrice(),
+            CustomButton(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ProductsScreen()),
+                );
+              },
+              name: "Comenzar Ventas",
+              color: Colors.green,
+              textColor: Colors.white,
+              isPressed: false,
+              radius: BorderRadius.circular(4),
+            ),
+            FilterProducts(),
+          ],
+        ),
       ),
     );
   }

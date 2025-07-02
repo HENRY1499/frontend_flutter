@@ -8,7 +8,7 @@ class FilterProducts extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productsAsync = ref.watch(productsProvider);
-    print(productsAsync);
+
     return productsAsync.when(
       data: (products) {
         return Autocomplete<Product>(
@@ -22,7 +22,7 @@ class FilterProducts extends ConsumerWidget {
             );
           },
           displayStringForOption: (Product p) => p.name,
-          onSelected: (p) => print("Seleccionado: ${p.name}"),
+          onSelected: (p) => print("Seleccionado: ${p.pid} ${p.category.name}"),
           fieldViewBuilder: (
             context,
             controller,

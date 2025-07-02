@@ -5,6 +5,9 @@ import 'package:prueba_tecnica/data/services/ProductServices.dart';
 final productProvider = StateProvider<String>((ref) => '');
 final total = StateProvider<double>((ref) => 0.00);
 
+// Details
+final categoryName = StateProvider<String>((ref) => '');
+
 final productServicesProvider = Provider((ref) => ProductServices());
 
 final productsProvider = FutureProvider<List<Product>>((ref) async {
