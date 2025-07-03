@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prueba_tecnica/features/products/widgets/product_form.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
-import 'package:prueba_tecnica/providers/product_provider.dart';
 
-class ProductsScreen extends ConsumerWidget {
-  const ProductsScreen({super.key});
-
+class ProductEmpy extends ConsumerWidget {
+  const ProductEmpy({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // prueba
-    final products = ref.watch(productsProvider);
-    print(products);
     return Container(
       height: double.infinity,
       color: Colors.white,
@@ -34,6 +30,21 @@ class ProductsScreen extends ConsumerWidget {
                 ),
               ),
               CustomButton(
+                onTap: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    builder: (BuildContext context) {
+                      return Padding(
+                        // ⚠️ Este padding mueve todo hacia arriba cuando aparece el teclado
+                        padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom,
+                        ),
+                        child: const ProductForm(),
+                      );
+                    },
+                  );
+                },
                 name: 'COMENZAR',
                 color: Color(0xFF40C4FF),
                 textColor: Colors.white,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:prueba_tecnica/features/home/screen/products_screen.dart';
+import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/features/home/widgets/total_price.dart';
 import 'package:prueba_tecnica/features/products/widgets/filter_products.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
@@ -25,6 +25,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         toolbarHeight: 100,
         backgroundColor: const Color(0xFF40C4FF),
