@@ -36,11 +36,10 @@ class ProductEmpy extends ConsumerWidget {
                     isScrollControlled: true,
                     builder: (BuildContext context) {
                       return Padding(
-                        // ⚠️ Este padding mueve todo hacia arriba cuando aparece el teclado
                         padding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom,
                         ),
-                        child: const ProductForm(),
+                        child: ProductForm(context: context),
                       );
                     },
                   );

@@ -22,7 +22,8 @@ class FilterProducts extends ConsumerWidget {
             );
           },
           displayStringForOption: (Product p) => p.name,
-          onSelected: (p) => print("Seleccionado: ${p.pid} ${p.category.name}"),
+          onSelected:
+              (p) => ref.read(productName.notifier).state = p.pid.toString(),
           fieldViewBuilder: (
             context,
             controller,
@@ -34,7 +35,19 @@ class FilterProducts extends ConsumerWidget {
               focusNode: focusNode,
               decoration: InputDecoration(
                 labelText: 'Buscar producto...',
-                border: OutlineInputBorder(),
+                labelStyle: TextStyle(
+                  color: Colors.grey[350],
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w700,
+                ),
+                icon: Icon(Icons.shopping_bag),
+                contentPadding: EdgeInsets.symmetric(
+                  vertical: 0,
+                  horizontal: 24,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(24)),
+                ),
               ),
             );
           },

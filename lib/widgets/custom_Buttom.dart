@@ -9,6 +9,7 @@ class CustomButton extends StatefulWidget {
   final Color? textColor;
   final double? fontSize;
   final VoidCallback? onTap;
+  final VoidCallback? onPress;
 
   const CustomButton({
     super.key,
@@ -20,6 +21,7 @@ class CustomButton extends StatefulWidget {
     required this.isPressed,
     this.radius,
     this.textColor,
+    this.onPress,
   });
 
   @override
