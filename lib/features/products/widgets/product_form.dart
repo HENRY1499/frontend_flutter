@@ -145,8 +145,7 @@ class _ProductForm extends ConsumerState<ProductForm> {
                       'dd/MM/yyyy',
                     ).format(values['createdat']),
                   };
-                  print('Enviar$formatData');
-                  final controller = ref.read(salesProvider);
+                  final controller = ref.read(detailsProvider.notifier);
 
                   try {
                     await controller.postDetails(formatData);

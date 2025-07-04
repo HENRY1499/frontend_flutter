@@ -8,12 +8,13 @@ class ProductsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final products = ref.watch(productsProvider);
-    return products.when(
+    final details = ref.watch(detailsProvider);
+    print('UI:$details');
+    return details.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, _) => Center(child: Text('Error:$err')),
-      data: (products) {
-        if (!products.isEmpty) {
+      data: (details) {
+        if (details.isEmpty) {
           return const ProductEmpy();
         } else {
           return Text("data");

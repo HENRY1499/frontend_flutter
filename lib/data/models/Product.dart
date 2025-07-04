@@ -8,16 +8,16 @@ part 'Product.g.dart';
 @JsonSerializable()
 class Product {
   @JsonKey(name: 'id_product')
-  final int pid;
+  final int? pid;
   final String name;
-  final String description;
+  final String? description;
   @JsonKey(name: 'sales_price')
-  final String salesPrice;
+  final String? salesPrice;
   @JsonKey(name: 'purchase_price')
-  final String purchasePrice;
-  final int stock;
+  final String? purchasePrice;
+  final int? stock;
   final Category category;
-  final String status;
+  final String? status;
   final DateTime? createdat;
   Product({
     required this.pid,

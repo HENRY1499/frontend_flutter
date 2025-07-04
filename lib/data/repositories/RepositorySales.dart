@@ -6,7 +6,7 @@ class RepositorySales {
   final SalesServices salesServices;
   RepositorySales(this.salesServices);
 
-  Future<List<Sales>> fetchDetails() async {
+  Future<List<Salesdetails>> fetchDetails() async {
     return await salesServices.getDetails();
   }
 
