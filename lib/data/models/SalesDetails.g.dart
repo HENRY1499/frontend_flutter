@@ -7,9 +7,9 @@ part of 'SalesDetails.dart';
 // **************************************************************************
 
 Salesdetails _$SalesdetailsFromJson(Map<String, dynamic> json) => Salesdetails(
-  product: Product.fromJson(json['product'] as Map<String, dynamic>),
-  quantity: (json['quantity'] as num).toDouble(),
-  salesPrice: (json['sales_price'] as num).toDouble(),
+  product: (json['id_product'] as num).toInt(),
+  quantity: (json['quantity'] as num).toInt(),
+  salesPrice: Salesdetails._doubleFromJson(json['sales_price']),
   payMethod: json['pay_method'] as String,
   createdat:
       json['createdat'] == null
@@ -19,9 +19,9 @@ Salesdetails _$SalesdetailsFromJson(Map<String, dynamic> json) => Salesdetails(
 
 Map<String, dynamic> _$SalesdetailsToJson(Salesdetails instance) =>
     <String, dynamic>{
-      'product': instance.product,
+      'id_product': instance.product,
       'quantity': instance.quantity,
-      'sales_price': instance.salesPrice,
+      'sales_price': Salesdetails._doubleToJson(instance.salesPrice),
       'pay_method': instance.payMethod,
       'createdat': instance.createdat?.toIso8601String(),
     };

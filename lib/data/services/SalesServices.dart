@@ -16,6 +16,7 @@ class SalesServices {
   }
 
   Future<List<Salesdetails>> saveDetails(Map<String, dynamic> data) async {
+    print('llegada de la data $data');
     final payload = {
       "details": [data],
     };
@@ -24,11 +25,13 @@ class SalesServices {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode(payload),
     );
+    print('Status code: ${response.statusCode}');
+    print('Response body: ${response.body}');
     if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body);
+      final List<dynamic> data = json.decode(response.body)['details'] ?? [];
       return data.map((json) => Salesdetails.fromJson(json)).toList();
     } else {
-      throw Exception('Error al cargar detalle de ventas');
+      throw Exception(jsonDecode(response.body)["error"]);
     }
   }
 }

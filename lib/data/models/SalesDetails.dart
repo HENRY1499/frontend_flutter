@@ -6,9 +6,14 @@ part 'SalesDetails.g.dart';
 
 @JsonSerializable()
 class Salesdetails {
-  final Product product;
-  final double quantity;
-  @JsonKey(name: 'sales_price')
+  @JsonKey(name: 'id_product')
+  final int product;
+  final int quantity;
+  @JsonKey(
+    name: 'sales_price',
+    fromJson: _doubleFromJson,
+    toJson: _doubleToJson,
+  )
   final double salesPrice;
   @JsonKey(name: 'pay_method')
   final String payMethod;
@@ -25,4 +30,8 @@ class Salesdetails {
       _$SalesdetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$SalesdetailsToJson(this);
+  static double _doubleFromJson(dynamic value) =>
+      double.tryParse(value.toString()) ?? 0.0;
+
+  static dynamic _doubleToJson(double value) => value;
 }

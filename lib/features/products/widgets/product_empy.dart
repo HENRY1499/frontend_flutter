@@ -39,7 +39,7 @@ class ProductEmpy extends ConsumerWidget {
                         padding: EdgeInsets.only(
                           bottom: MediaQuery.of(context).viewInsets.bottom,
                         ),
-                        child: ProductForm(context: context),
+                        child: ProductForm(),
                       );
                     },
                   );

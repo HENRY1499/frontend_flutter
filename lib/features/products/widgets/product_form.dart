@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
-import 'package:prueba_tecnica/data/repositories/RepositorySales.dart';
-import 'package:prueba_tecnica/data/services/SalesServices.dart';
 import 'package:prueba_tecnica/features/products/widgets/filter_products.dart';
-import 'package:prueba_tecnica/features/sales/controllers/SalesController.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
+import 'package:another_flushbar/flushbar.dart';
 
 class ProductForm extends ConsumerStatefulWidget {
-  final BuildContext context;
-  const ProductForm({super.key, required this.context});
+  const ProductForm({super.key});
   @override
   ConsumerState<ProductForm> createState() => _ProductForm();
 }
@@ -22,6 +19,8 @@ class _ProductForm extends ConsumerState<ProductForm> {
   @override
   Widget build(BuildContext context) {
     final product = ref.watch(productName);
+    final localcontext = context;
+
     return SingleChildScrollView(
       padding: EdgeInsets.all(24),
       child: FormBuilder(
@@ -48,6 +47,7 @@ class _ProductForm extends ConsumerState<ProductForm> {
                 Expanded(
                   child: FormBuilderTextField(
                     name: 'quantity',
+                    initialValue: '',
                     decoration: InputDecoration(
                       labelText: 'Cantidad',
                       labelStyle: TextStyle(
@@ -68,6 +68,7 @@ class _ProductForm extends ConsumerState<ProductForm> {
                 Expanded(
                   child: FormBuilderTextField(
                     name: 'sales_price',
+                    initialValue: '',
                     decoration: InputDecoration(
                       labelStyle: TextStyle(
                         fontFamily: 'Montserrat',
@@ -90,6 +91,7 @@ class _ProductForm extends ConsumerState<ProductForm> {
 
             FormBuilderDropdown(
               name: 'pay_method',
+              initialValue: '',
               decoration: InputDecoration(
                 labelText: 'Método de Pago',
                 labelStyle: TextStyle(fontFamily: 'Montserrat', fontSize: 16),
@@ -120,11 +122,15 @@ class _ProductForm extends ConsumerState<ProductForm> {
               isPressed: false,
               onTap: () async {
                 if (product.isEmpty) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Selecciona un producto antes de enviar'),
-                    ),
-                  );
+                  if (!mounted) return;
+                  Flushbar(
+                    title: "ERROR",
+                    showProgressIndicator: true,
+                    shouldIconPulse: true,
+                    message: "PRODUCTO ESTA VACIO!!!",
+                    duration: const Duration(seconds: 10),
+                    backgroundColor: Colors.red,
+                  ).show(localcontext);
                   return;
                 }
                 if (_formKey.currentState?.saveAndValidate() ?? false) {
@@ -139,19 +145,35 @@ class _ProductForm extends ConsumerState<ProductForm> {
                       'dd/MM/yyyy',
                     ).format(values['createdat']),
                   };
+                  print('Enviar$formatData');
                   final controller = ref.read(salesProvider);
+
                   try {
                     await controller.postDetails(formatData);
                     if (!mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('VENTA REGISTRADA!!!')),
-                    );
+                    Flushbar(
+                      title: "Éxito",
+                      message: "VENTA REGISTRADA!!!",
+                      duration: const Duration(seconds: 6),
+                      backgroundColor: Colors.green,
+                    ).show(localcontext);
                     _formKey.currentState?.reset();
+                    ref.read(productName.notifier).state = '';
                   } catch (e) {
-                    if (!mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Error al enviar ❌')),
+                    final errorMessage = e.toString().replaceFirst(
+                      RegExp(r'Exception: Exception:'),
+                      '',
                     );
+                    if (!mounted) return;
+                    Flushbar(
+                      title: "Error",
+                      icon: Icon(Icons.error),
+                      shouldIconPulse: true,
+                      message: errorMessage,
+                      flushbarPosition: FlushbarPosition.TOP,
+                      duration: const Duration(seconds: 10),
+                      backgroundColor: Colors.redAccent,
+                    ).show(localcontext);
                   }
                 }
               },

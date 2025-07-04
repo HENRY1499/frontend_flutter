@@ -111,7 +111,6 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
               isPressed: false,
               radius: BorderRadius.circular(4),
             ),
-            FilterProducts(),
           ],
         ),
       ),

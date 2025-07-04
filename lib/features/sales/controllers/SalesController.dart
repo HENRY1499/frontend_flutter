@@ -20,7 +20,10 @@ class SalesController {
       final data = await repositorySales.fetchSalesDetails(detail);
       return data;
     } catch (e) {
-      throw Exception('Error al guardar los detalles de ventas');
+      print(
+        'Controller ERROR: ${e.toString().replaceFirst(RegExp(r'Exception: ?'), '')}',
+      );
+      throw Exception(e);
     }
   }
 }
