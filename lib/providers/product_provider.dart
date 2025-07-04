@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/data/models/Product.dart';
+import 'package:prueba_tecnica/data/models/SalesDetailResponse.dart';
 import 'package:prueba_tecnica/data/models/SalesDetails.dart';
 import 'package:prueba_tecnica/data/services/ProductServices.dart';
 import 'package:prueba_tecnica/features/sales/controllers/SalesController.dart';
@@ -21,7 +22,13 @@ final productsProvider = FutureProvider<List<Product>>((ref) async {
 //   return SalesController(RepositorySales(SalesServices()));
 // });
 // Controller - AsyncProvider
+
 final detailsProvider =
-    AsyncNotifierProvider<SalesController, List<Salesdetails>>(
-      SalesController.new,
+    AsyncNotifierProvider<SalesGetController, List<SalesDetailResponse>>(
+      SalesGetController.new,
+    );
+
+final postDetailsProvider =
+    AsyncNotifierProvider<SalesPostController, List<Salesdetails>>(
+      SalesPostController.new,
     );

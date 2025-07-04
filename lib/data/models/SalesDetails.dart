@@ -1,6 +1,5 @@
 import 'dart:ffi';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:prueba_tecnica/data/models/Product.dart';
 
 part 'SalesDetails.g.dart';
 

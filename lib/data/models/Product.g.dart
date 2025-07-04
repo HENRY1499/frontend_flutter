@@ -7,14 +7,14 @@ part of 'Product.dart';
 // **************************************************************************
 
 Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-  pid: (json['id_product'] as num).toInt(),
+  pid: (json['id_product'] as num?)?.toInt(),
   name: json['name'] as String,
-  description: json['description'] as String,
-  salesPrice: json['sales_price'] as String,
-  purchasePrice: json['purchase_price'] as String,
-  stock: (json['stock'] as num).toInt(),
+  description: json['description'] as String?,
+  salesPrice: json['sales_price'] as String?,
+  purchasePrice: json['purchase_price'] as String?,
+  stock: (json['stock'] as num?)?.toInt(),
   category: Category.fromJson(json['category'] as Map<String, dynamic>),
-  status: json['status'] as String,
+  status: json['status'] as String?,
   createdat:
       json['createdat'] == null
           ? null

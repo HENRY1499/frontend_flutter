@@ -20,15 +20,15 @@ class Product {
   final String? status;
   final DateTime? createdat;
   Product({
-    required this.pid,
+    this.pid,
     required this.name,
-    required this.description,
-    required this.salesPrice,
-    required this.purchasePrice,
-    required this.stock,
+    this.description,
+    this.salesPrice,
+    this.purchasePrice,
+    this.stock,
     required this.category,
-    required this.status,
-    required this.createdat,
+    this.status,
+    this.createdat,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) =>

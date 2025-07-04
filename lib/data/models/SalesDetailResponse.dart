@@ -1,15 +1,20 @@
+import 'dart:ffi';
 import 'package:json_annotation/json_annotation.dart';
-import 'product.dart'; // tu modelo anidado
+import 'package:prueba_tecnica/data/models/Product.dart';
 
-part 'sales_detail_response.g.dart';
+part 'SalesDetailResponse.g.dart';
 
 @JsonSerializable()
 class SalesDetailResponse {
   final int quantity;
 
-  @JsonKey(name: 'sales_price')
+  @JsonKey(
+    name: 'sales_price',
+    fromJson: _doubleFromJson,
+    toJson: _doubleToJson,
+  )
   final double salesPrice;
-
+  @JsonKey(name: 'pay_method')
   final String payMethod;
   final DateTime createdat;
 
@@ -27,4 +32,8 @@ class SalesDetailResponse {
       _$SalesDetailResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$SalesDetailResponseToJson(this);
+  static double _doubleFromJson(dynamic value) =>
+      double.tryParse(value.toString()) ?? 0.0;
+
+  static dynamic _doubleToJson(double value) => value;
 }

@@ -1,12 +1,12 @@
+import 'package:prueba_tecnica/data/models/SalesDetailResponse.dart';
 import 'package:prueba_tecnica/data/services/SalesServices.dart';
-import 'package:prueba_tecnica/data/models/Sales.dart';
 import 'package:prueba_tecnica/data/models/SalesDetails.dart';
 
 class RepositorySales {
   final SalesServices salesServices;
   RepositorySales(this.salesServices);
 
-  Future<List<Salesdetails>> fetchDetails() async {
+  Future<List<SalesDetailResponse>> fetchDetails() async {
     return await salesServices.getDetails();
   }
 
