@@ -26,12 +26,14 @@ class _AppbarCustomState extends ConsumerState<AppbarCustom> {
           Navigator.pop(context);
         },
       ),
-      title: Text(
-        '${DateFormat('EEEE, d MMMM yyyy', 'es_PE').format(DateTime.now())}',
-        style: TextStyle(
-          fontSize: 18.0,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
+      title: FittedBox(
+        child: Text(
+          '${DateFormat('EEEE, d MMMM yyyy', 'es_PE').format(DateTime.now())}',
+          style: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
         ),
       ),
       actions: [
