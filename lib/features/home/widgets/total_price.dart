@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:prueba_tecnica/providers/product_provider.dart';
 
 class TotalPrice extends ConsumerStatefulWidget {
   const TotalPrice({super.key});
@@ -19,6 +20,15 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
   Widget build(BuildContext context) {
     final ahora = DateTime.now();
     final fechaFormateada = DateFormat.yMMMMd('es').format(ahora);
+    final data = ref.watch(
+      detailsProvider.select(
+        (value) => value.maybeWhen(
+          data: (list) => list.fold(0.0, (acc, item) => acc + item.salesPrice),
+          orElse: () => 0.0,
+        ),
+      ),
+    );
+    print('Total: $data');
     return Container(
       width: double.infinity,
       height: 200,
@@ -53,7 +63,7 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
               children: [
                 Text("S/"),
                 Text(
-                  "0.00",
+                  '$data',
                   style: TextStyle(
                     color: Colors.black,
                     fontFamily: 'Montserrat',
