@@ -20,8 +20,8 @@ class SalesDetailsUI extends ConsumerWidget {
                 scrollDirection: Axis.vertical,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  crossAxisSpacing: 5,
-                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                   childAspectRatio: 3 / 1, // ancho / alto
                 ),
                 itemCount: data.length,
