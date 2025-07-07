@@ -19,7 +19,7 @@ class SalesDetailsUI extends ConsumerWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(4.0),
+              padding: const EdgeInsets.all(0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
