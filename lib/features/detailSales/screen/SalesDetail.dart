@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:prueba_tecnica/features/sales/widget/products_details.dart';
+import 'package:prueba_tecnica/features/detailSales/widget/products_details.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/appbar.dart';
 

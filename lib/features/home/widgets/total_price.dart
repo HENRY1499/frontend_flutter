@@ -20,62 +20,65 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
   Widget build(BuildContext context) {
     final ahora = DateTime.now();
     final fechaFormateada = DateFormat.yMMMMd('es').format(ahora);
-    final data = ref.watch(
-      detailsProvider.select(
-        (value) => value.maybeWhen(
-          data: (list) => list.fold(0.0, (acc, item) => acc + item.salesPrice),
-          orElse: () => 0.0,
-        ),
-      ),
-    );
-    print('Total: $data');
-    return Container(
-      width: double.infinity,
-      height: 200,
-      color: Colors.white,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 10,
-          children: [
-            Text(
-              fechaFormateada,
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w600,
-                fontSize: 12,
-              ),
-            ),
-            Text(
-              "Total",
-              style: TextStyle(
-                color: Colors.black,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("S/"),
-                Text(
-                  '$data',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w400,
-                    fontSize: 48,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+    final salesAsync = ref.watch(salesProvider);
+    return salesAsync.when(
+      loading: () => Center(child: CircularProgressIndicator()),
+      error: (err, _) => Center(child: Text('$err')),
+      data: (data) {
+        final total = data.fold(0.0, (acc, item) => acc + item.total);
+        return _builTotal(fechaFormateada, total);
+      },
     );
   }
+}
+
+Widget _builTotal(String fecha, double total) {
+  return Container(
+    width: double.infinity,
+    height: 200,
+    color: Colors.white,
+    child: Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 10,
+        children: [
+          Text(
+            fecha,
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.w600,
+              fontSize: 12,
+            ),
+          ),
+          Text(
+            "Total",
+            style: TextStyle(
+              color: Colors.black,
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("S/"),
+              Text(
+                '$total',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: 'Montserrat',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 48,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ),
+  );
 }

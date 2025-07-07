@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/data/models/Product.dart';
+import 'package:prueba_tecnica/data/models/Sales.dart';
 import 'package:prueba_tecnica/data/models/SalesDetailResponse.dart';
 import 'package:prueba_tecnica/data/models/SalesDetails.dart';
 import 'package:prueba_tecnica/data/services/ProductServices.dart';
+import 'package:prueba_tecnica/features/detailSales/controllers/SalesController.dart';
 import 'package:prueba_tecnica/features/sales/controllers/SalesController.dart';
 
 final productProvider = StateProvider<String>((ref) => '');
@@ -32,3 +34,8 @@ final postDetailsProvider =
     AsyncNotifierProvider<SalesPostController, List<Salesdetails>>(
       SalesPostController.new,
     );
+
+//SALES - ASYNCPROVIDER
+final salesProvider = AsyncNotifierProvider<SalesController, List<Sales>>(
+  SalesController.new,
+);

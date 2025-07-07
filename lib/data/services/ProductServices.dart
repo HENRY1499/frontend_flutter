@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 class ProductServices {
   Future<List<Product>> getProducts() async {
     final response = await http.get(Uri.parse('$apiBaseUrl/product'));
+    print('resp: ${response.body}');
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       return data.map((json) => Product.fromJson(json)).toList();

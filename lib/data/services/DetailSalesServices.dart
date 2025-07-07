@@ -4,10 +4,9 @@ import 'package:prueba_tecnica/data/models/SalesDetailResponse.dart';
 import 'package:prueba_tecnica/data/models/SalesDetails.dart';
 import 'package:http/http.dart' as http;
 
-class SalesServices {
+class SalesDetailServices {
   Future<List<SalesDetailResponse>> getDetails() async {
     final response = await http.get(Uri.parse('$apiBaseUrl/sales/details'));
-    print('Carga de datos de details: ${response.body}');
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body);
       return data.map((json) => SalesDetailResponse.fromJson(json)).toList();
