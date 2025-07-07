@@ -14,7 +14,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
   purchasePrice: json['purchase_price'] as String?,
   stock: (json['stock'] as num?)?.toInt(),
   category: Category.fromJson(json['category'] as Map<String, dynamic>),
-  status: (json['status'] as num?)?.toInt(),
+  status: json['status'] as String?,
   createdat:
       json['createdat'] == null
           ? null

@@ -17,7 +17,7 @@ class Product {
   final String? purchasePrice;
   final int? stock;
   final Category category;
-  final int? status;
+  final String? status;
   final DateTime? createdat;
   Product({
     this.pid,

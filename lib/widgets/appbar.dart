@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -19,7 +20,7 @@ class _AppbarCustomState extends ConsumerState<AppbarCustom> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return AppBar(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Color(0xFF40C4FF),
       leading: IconButton(
         icon: Icon(Icons.arrow_back, color: Colors.white),
         onPressed: () {
@@ -47,19 +48,15 @@ class _AppbarCustomState extends ConsumerState<AppbarCustom> {
               hintText: 'Buscar Producto',
               hintStyle: WidgetStateProperty.all(
                 const TextStyle(
-                  color: Colors.grey,
+                  color: Color(0xFF40C4FF),
                   fontStyle: FontStyle.italic,
                   fontSize: 16,
                 ),
               ),
-              shadowColor: WidgetStateProperty.all(Colors.grey[800]),
-              backgroundColor: WidgetStateProperty.all(
-                isExpanded
-                    ? const Color(0xffE9D7C0)
-                    : const Color.fromARGB(162, 233, 215, 192),
-              ),
-              elevation: WidgetStateProperty.all(0.7),
-              leading: const Icon(Icons.search, color: Colors.white),
+              shadowColor: WidgetStateProperty.all(Colors.white),
+              backgroundColor: WidgetStateProperty.all(Colors.white),
+              elevation: WidgetStateProperty.all(0.8),
+              leading: Icon(Icons.search, color: Color(0xFF40C4FF)),
               onTap: () {
                 setState(() {
                   isExpanded = true;

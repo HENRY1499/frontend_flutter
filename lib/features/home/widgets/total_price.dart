@@ -21,6 +21,7 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
     final ahora = DateTime.now();
     final fechaFormateada = DateFormat.yMMMMd('es').format(ahora);
     final salesAsync = ref.watch(salesProvider);
+    print('Total UI home: $salesAsync');
     return salesAsync.when(
       loading: () => Center(child: CircularProgressIndicator()),
       error: (err, _) => Center(child: Text('$err')),

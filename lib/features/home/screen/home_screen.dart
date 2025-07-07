@@ -26,12 +26,10 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        toolbarHeight: 100,
         backgroundColor: const Color(0xFF40C4FF),
-        title: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 8.0,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -51,42 +49,9 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: SearchBar(
-                    controller: controller,
-                    hintText: 'Buscar Producto ',
-                    backgroundColor: WidgetStateProperty.all(Colors.white),
-                    constraints: const BoxConstraints(
-                      minHeight: 30.0, // puedes ajustar este valor
-                      maxHeight: 30.0,
-                    ),
-                    shape: WidgetStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                    ),
-                    hintStyle: WidgetStateProperty.all(
-                      TextStyle(
-                        color: Colors.grey,
-                        fontStyle: FontStyle.italic,
-                        fontSize: 12,
-                      ),
-                    ),
-                    leading: Icon(Icons.search, color: const Color(0xFF40C4FF)),
-                    onChanged:
-                        (value) => {
-                          setState(() {
-                            searchText = value;
-                          }),
-                        },
-                  ),
-                ),
-                //CONTINUAR DESDE AQUI
-              ],
+            Text(
+              'filtros',
+              style: TextStyle(color: Colors.white, fontSize: 14),
             ),
           ],
         ),
@@ -104,7 +69,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
                   MaterialPageRoute(builder: (context) => ProductsScreen()),
                 );
               },
-              name: "Comenzar Ventas",
+              name: "Comenzar",
               color: Colors.green,
               textColor: Colors.white,
               isPressed: false,

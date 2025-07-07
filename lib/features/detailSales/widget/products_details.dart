@@ -64,7 +64,7 @@ class ProductDetails extends ConsumerWidget {
                   'S/',
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    fontSize: 12,
+                    fontSize: 10,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -72,7 +72,7 @@ class ProductDetails extends ConsumerWidget {
                   '${detail.salesPrice}',
                   style: TextStyle(
                     fontFamily: 'Montserrat',
-                    fontSize: 24,
+                    fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

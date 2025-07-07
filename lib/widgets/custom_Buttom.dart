@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
   final String name;
+  final double? px;
+  final double? py;
+  final double? width;
   final bool isPressed;
   final BorderRadius? radius;
   final Color color;
+  final IconData? icon;
   final double? height;
   final Color? textColor;
   final double? fontSize;
@@ -13,6 +17,7 @@ class CustomButton extends StatefulWidget {
 
   const CustomButton({
     super.key,
+    this.width,
     required this.name,
     this.onTap,
     this.height,
@@ -22,6 +27,9 @@ class CustomButton extends StatefulWidget {
     this.radius,
     this.textColor,
     this.onPress,
+    this.px,
+    this.icon,
+    this.py,
   });
 
   @override
@@ -36,9 +44,12 @@ class _CustomButton extends State<CustomButton> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         curve: Curves.linear,
-        width: 250,
-        padding: EdgeInsets.symmetric(vertical: 4.0, horizontal: 0),
-        margin: const EdgeInsets.symmetric(horizontal: 2),
+        width: widget.width,
+        padding: EdgeInsets.symmetric(
+          vertical: widget.py ?? 4.0,
+          horizontal: widget.px ?? 4.0,
+        ),
+        margin: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         decoration: BoxDecoration(
           shape: BoxShape.rectangle,
           border:
@@ -48,16 +59,23 @@ class _CustomButton extends State<CustomButton> {
           color: widget.color,
           borderRadius: widget.radius,
         ),
-        child: Center(
-          child: Text(
-            widget.name,
-            style: TextStyle(
-              color: widget.textColor,
-              fontSize: widget.fontSize,
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w600,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          spacing: 4.0,
+          children: [
+            Text(
+              widget.name,
+              style: TextStyle(
+                color: widget.textColor,
+                fontSize: widget.fontSize,
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
+            if (widget.icon != null)
+              Icon(widget.icon, size: 18, color: Colors.white),
+          ],
         ),
       ),
     );

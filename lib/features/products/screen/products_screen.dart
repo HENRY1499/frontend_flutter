@@ -10,7 +10,6 @@ class ProductsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final details = ref.watch(detailsProvider);
-    print('UI:$details');
     return details.when(
       loading: () => const Center(child: CircularProgressIndicator()),
       error: (err, _) => Center(child: Text('Error:$err')),
