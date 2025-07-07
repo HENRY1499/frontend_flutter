@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prueba_tecnica/features/home/widgets/employed.dart';
 import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/features/home/widgets/total_price.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
@@ -75,6 +76,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
               isPressed: false,
               radius: BorderRadius.circular(4),
             ),
+            Employed(),
           ],
         ),
       ),
