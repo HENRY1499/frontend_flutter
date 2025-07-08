@@ -67,7 +67,7 @@ Widget _builTotal(String fecha, double total) {
             children: [
               Text("S/"),
               Text(
-                '$total',
+                '${total.toStringAsFixed(2)}',
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'Montserrat',

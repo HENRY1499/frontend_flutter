@@ -14,16 +14,10 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreen extends ConsumerState<HomeScreen> {
-  final TextEditingController controller = TextEditingController();
-  String searchText = '';
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final data = ref.watch(detailCount);
+    print(data);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -58,7 +52,6 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,10 +64,12 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
                   MaterialPageRoute(builder: (context) => ProductsScreen()),
                 );
               },
-              name: "Comenzar",
+              name: data <= 0 ? "Comenzar" : 'Seguir Vendiendo',
               color: Colors.green,
               textColor: Colors.white,
+              fontSize: 12,
               isPressed: false,
+              py: 10.0,
               radius: BorderRadius.circular(4),
             ),
             SizedBox(height: 45),

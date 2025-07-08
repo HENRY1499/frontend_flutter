@@ -66,3 +66,14 @@ final sumMethodType = Provider<Map<String, double>>((ref) {
     loading: () => {},
   );
 });
+
+final detailCount = Provider<int>((ref) {
+  final detailAsync = ref.watch(detailsProvider);
+  return detailAsync.when(
+    data: (detail) {
+      return detail.length;
+    },
+    error: (err, _) => 0,
+    loading: () => 0,
+  );
+});

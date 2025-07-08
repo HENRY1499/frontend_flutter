@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
+import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/features/products/widgets/filter_products.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
@@ -125,9 +126,9 @@ class _ProductForm extends ConsumerState<ProductForm> {
                   if (!mounted) return;
                   Flushbar(
                     title: "ERROR",
-                    showProgressIndicator: true,
                     shouldIconPulse: true,
                     message: "PRODUCTO ESTA VACIO!!!",
+                    flushbarPosition: FlushbarPosition.TOP,
                     duration: const Duration(seconds: 10),
                     backgroundColor: Colors.red,
                   ).show(localcontext);
@@ -138,8 +139,8 @@ class _ProductForm extends ConsumerState<ProductForm> {
                   //formatea datos para enviar al back
                   final formatData = {
                     "id_product": int.parse(product),
-                    "quantity": int.parse(values['quantity']),
-                    "sales_price": double.parse(values['sales_price']),
+                    "quantity": int.parse(values['quantity'] ?? 0),
+                    "sales_price": double.parse(values['sales_price'] ?? 0),
                     "pay_method": values['pay_method'],
                     "createdat": DateFormat(
                       'dd/MM/yyyy',
@@ -150,14 +151,22 @@ class _ProductForm extends ConsumerState<ProductForm> {
                   try {
                     await controller.postDetails(formatData);
                     if (!mounted) return;
-                    Flushbar(
+                    await Flushbar(
                       title: "Éxito",
                       message: "VENTA REGISTRADA!!!",
-                      duration: const Duration(seconds: 6),
+                      icon: Icon(Icons.check, color: Colors.white),
+                      flushbarPosition: FlushbarPosition.TOP,
+                      duration: const Duration(seconds: 2),
                       backgroundColor: Colors.green,
                     ).show(localcontext);
-                    _formKey.currentState?.reset();
-                    ref.read(productName.notifier).state = '';
+
+                    ref.invalidate(detailsProvider);
+                    Navigator.pushReplacement(
+                      localcontext,
+                      MaterialPageRoute(builder: (context) => ProductsScreen()),
+                    );
+                    // _formKey.currentState?.reset();
+                    // ref.read(productName.notifier).state = '';
                   } catch (e) {
                     final errorMessage = e.toString().replaceFirst(
                       RegExp(r'Exception: Exception:'),
