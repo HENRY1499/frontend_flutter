@@ -19,7 +19,7 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
   @override
   Widget build(BuildContext context) {
     final ahora = DateTime.now();
-    final fechaFormateada = DateFormat.yMMMMd('es').format(ahora);
+    final fechaFormateada = DateFormat.yMMMMEEEEd('es_PE').format(ahora);
     final salesAsync = ref.watch(salesProvider);
     return salesAsync.when(
       loading: () => Center(child: CircularProgressIndicator()),

@@ -60,7 +60,8 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
       body: SingleChildScrollView(
         padding: EdgeInsets.all(8),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TotalPrice(),
             CustomButton(
@@ -76,6 +77,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
               isPressed: false,
               radius: BorderRadius.circular(4),
             ),
+            SizedBox(height: 45),
             Employed(),
           ],
         ),
