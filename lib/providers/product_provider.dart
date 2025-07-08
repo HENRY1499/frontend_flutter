@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/data/models/Product.dart';
 import 'package:prueba_tecnica/data/models/Sales.dart';
@@ -39,3 +40,29 @@ final postDetailsProvider =
 final salesProvider = AsyncNotifierProvider<SalesController, List<Sales>>(
   SalesController.new,
 );
+
+// SUMA DE TOTALES SEGUN EFECTIVO O YAPE
+final sumMethodType = Provider<Map<String, double>>((ref) {
+  final detailsAsync = ref.watch(detailsProvider);
+
+  return detailsAsync.when(
+    data: (detail) {
+      final Map<String, double> data = {};
+
+      for (final item in detail) {
+        final method = item.payMethod;
+        final quantity = item.quantity;
+        final total = item.salesPrice * quantity;
+
+        if (data.containsKey(method)) {
+          data[method] = data[method]! + total;
+        } else {
+          data[method] = total;
+        }
+      }
+      return data;
+    },
+    error: (e, _) => {},
+    loading: () => {},
+  );
+});

@@ -69,7 +69,7 @@ class ProductDetails extends ConsumerWidget {
                   ),
                 ),
                 Text(
-                  '${detail.salesPrice}',
+                  '${detail.salesPrice * detail.quantity}',
                   style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 14,
