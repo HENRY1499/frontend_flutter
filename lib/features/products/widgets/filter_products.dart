@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/data/models/Product.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
-import 'package:prueba_tecnica/widgets/splashscreen.dart';
 
 class FilterProducts extends ConsumerWidget {
   const FilterProducts({super.key});
@@ -54,7 +53,7 @@ class FilterProducts extends ConsumerWidget {
           },
         );
       },
-      loading: () => const LoadingSplash(),
+      loading: () => const CircularProgressIndicator(),
       error: (err, _) => Text('Error al cargar productos: $err'),
     );
   }

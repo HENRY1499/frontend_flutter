@@ -78,7 +78,7 @@ class SalesDetailsUI extends ConsumerWidget {
                       },
                     ),
                 error: (err, _) => Center(child: Text('$err')),
-                loading: () => const Center(child: LoadingSplash()),
+                loading: () => const Center(child: CircularProgressIndicator()),
               ),
             ),
           ],

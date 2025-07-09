@@ -67,10 +67,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
+    - assets/
     - assets/images/
     - assets/lotties/Wallet.json
     - assets/lotties/CountTotal.json
-    - assets/
   fonts:
     - family: Montserrat
       fonts:

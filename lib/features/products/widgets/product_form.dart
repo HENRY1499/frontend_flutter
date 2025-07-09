@@ -42,6 +42,7 @@ class _ProductForm extends ConsumerState<ProductForm> {
             ),
             SizedBox(height: 14),
             Row(children: [Expanded(child: FilterProducts())]),
+            SizedBox(height: 4),
             Row(
               spacing: 8,
               children: [
