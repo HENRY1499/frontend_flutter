@@ -150,7 +150,10 @@ class _ProductForm extends ConsumerState<ProductForm> {
 
                   try {
                     await controller.postDetails(formatData);
+                    ref.invalidate(detailsProvider);
+                    ref.invalidate(salesProvider);
                     if (!mounted) return;
+                    Navigator.pop(context, true);
                     await Flushbar(
                       title: "Éxito",
                       message: "VENTA REGISTRADA!!!",
@@ -159,19 +162,12 @@ class _ProductForm extends ConsumerState<ProductForm> {
                       duration: const Duration(seconds: 2),
                       backgroundColor: Colors.green,
                     ).show(localcontext);
-
-                    ref.invalidate(detailsProvider);
-                    Navigator.pushReplacement(
-                      localcontext,
-                      MaterialPageRoute(builder: (context) => ProductsScreen()),
-                    );
-                    // _formKey.currentState?.reset();
-                    // ref.read(productName.notifier).state = '';
                   } catch (e) {
                     final errorMessage = e.toString().replaceFirst(
                       RegExp(r'Exception: Exception:'),
                       '',
                     );
+
                     if (!mounted) return;
                     Flushbar(
                       title: "Error",
