@@ -90,18 +90,31 @@ class _ProductForm extends ConsumerState<ProductForm> {
                 ),
               ],
             ),
-
-            FormBuilderDropdown(
+            SizedBox(height: 12),
+            FormBuilderRadioGroup<String>(
               name: 'pay_method',
-              initialValue: '',
+              initialValue: 'yape', // Puedes establecer un valor inicial
               decoration: InputDecoration(
                 labelText: 'Método de Pago',
-                labelStyle: TextStyle(fontFamily: 'Montserrat', fontSize: 16),
+                labelStyle: TextStyle(fontFamily: 'Montserrat', fontSize: 20),
+                border: InputBorder.none,
               ),
-              items:
-                  ['yape', 'efectivo']
-                      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                      .toList(),
+              options:
+                  ['yape', 'efectivo'].map((method) {
+                    return FormBuilderFieldOption(
+                      value: method,
+                      child: Text(
+                        method[0].toUpperCase() +
+                            method.substring(1), // capitaliza
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontSize: 14,
+                        ),
+                      ),
+                    );
+                  }).toList(),
+              wrapSpacing: 0,
+              // controlAffinity: ControlAffinity.leading,
             ),
 
             FormBuilderDateTimePicker(
@@ -118,7 +131,8 @@ class _ProductForm extends ConsumerState<ProductForm> {
             const SizedBox(height: 20),
             CustomButton(
               name: 'Guardar',
-              radius: BorderRadius.all(Radius.circular(100)),
+              radius: BorderRadius.all(Radius.circular(10)),
+              py: 8.0,
               textColor: Colors.white,
               color: Colors.green[600]!,
               isPressed: false,

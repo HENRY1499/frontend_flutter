@@ -6,7 +6,6 @@ import 'package:prueba_tecnica/features/products/widgets/product_form.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/appbar.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
-import 'package:prueba_tecnica/widgets/splashscreen.dart';
 
 class SalesDetailsUI extends ConsumerWidget {
   const SalesDetailsUI({super.key});
