@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
-import 'package:prueba_tecnica/providers/yapeProvider.dart';
 
 class Employed extends ConsumerWidget {
   const Employed({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final method = ref.watch(sumMethodType);
-    final yapeProvider = ref.watch(yapeNotifierProvider);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8.0),
       child: Column(
@@ -84,34 +82,6 @@ class Employed extends ConsumerWidget {
                     ),
                   );
                 }).toList(),
-          ),
-          Text(
-            'Yape Detectado',
-            style: TextStyle(
-              color: Colors.purple,
-              fontSize: 20,
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 10),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            margin: const EdgeInsets.only(bottom: 20),
-            decoration: BoxDecoration(
-              color: Colors.purple[50],
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.purple),
-            ),
-            child: Text(
-              'S/. ${yapeProvider.toStringAsFixed(2)}',
-              style: const TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.purple,
-              ),
-            ),
           ),
         ],
       ),
