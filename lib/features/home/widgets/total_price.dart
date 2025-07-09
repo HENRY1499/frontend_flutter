@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 
 class TotalPrice extends ConsumerStatefulWidget {
@@ -22,7 +23,24 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
     final fechaFormateada = DateFormat.yMMMMEEEEd('es_PE').format(ahora);
     final salesAsync = ref.watch(salesProvider);
     return salesAsync.when(
-      loading: () => Center(child: CircularProgressIndicator()),
+      loading:
+          () => Center(
+            child: Column(
+              children: [
+                Lottie.asset(
+                  'assets/lotties/CountTotal.json',
+                  width: 100,
+                  height: 100,
+                  repeat: true,
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'No hay métodos de pago registrados.',
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+          ),
       error: (err, _) => Center(child: Text('$err')),
       data: (data) {
         final total = data.fold(0.0, (acc, item) => acc + item.total);

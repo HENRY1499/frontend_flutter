@@ -6,6 +6,7 @@ import 'package:prueba_tecnica/features/products/widgets/product_form.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/appbar.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
+import 'package:prueba_tecnica/widgets/splashscreen.dart';
 
 class SalesDetailsUI extends ConsumerWidget {
   const SalesDetailsUI({super.key});
@@ -19,7 +20,7 @@ class SalesDetailsUI extends ConsumerWidget {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(0),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,7 +78,7 @@ class SalesDetailsUI extends ConsumerWidget {
                       },
                     ),
                 error: (err, _) => Center(child: Text('$err')),
-                loading: () => const Center(child: CircularProgressIndicator()),
+                loading: () => const Center(child: LoadingSplash()),
               ),
             ),
           ],

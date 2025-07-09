@@ -37,41 +37,41 @@ class _AppbarCustomState extends ConsumerState<AppbarCustom> {
           ),
         ),
       ),
-      actions: [
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 8.0),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            width: isExpanded ? screenWidth * 0.5 : 40.0,
-            height: 40.0,
-            child: SearchBar(
-              hintText: 'Buscar Producto',
-              hintStyle: WidgetStateProperty.all(
-                const TextStyle(
-                  color: Color(0xFF40C4FF),
-                  fontStyle: FontStyle.italic,
-                  fontSize: 16,
-                ),
-              ),
-              shadowColor: WidgetStateProperty.all(Colors.white),
-              backgroundColor: WidgetStateProperty.all(Colors.white),
-              elevation: WidgetStateProperty.all(0.8),
-              leading: Icon(Icons.search, color: Color(0xFF40C4FF)),
-              onTap: () {
-                setState(() {
-                  isExpanded = true;
-                });
-              },
-              onTapOutside: (event) {
-                FocusScope.of(context).unfocus();
-                setState(() {
-                  isExpanded = false;
-                });
-              },
-            ),
-          ),
-        ),
-      ],
+      // actions: [
+      //   Padding(
+      //     padding: EdgeInsets.symmetric(vertical: 0, horizontal: 8.0),
+      //     child: AnimatedContainer(
+      //       duration: const Duration(milliseconds: 300),
+      //       width: isExpanded ? screenWidth * 0.5 : 40.0,
+      //       height: 40.0,
+      //       child: SearchBar(
+      //         hintText: 'Buscar Producto',
+      //         hintStyle: WidgetStateProperty.all(
+      //           const TextStyle(
+      //             color: Color(0xFF40C4FF),
+      //             fontStyle: FontStyle.italic,
+      //             fontSize: 16,
+      //           ),
+      //         ),
+      //         shadowColor: WidgetStateProperty.all(Colors.white),
+      //         backgroundColor: WidgetStateProperty.all(Colors.white),
+      //         elevation: WidgetStateProperty.all(0.8),
+      //         leading: Icon(Icons.search, color: Color(0xFF40C4FF)),
+      //         onTap: () {
+      //           setState(() {
+      //             isExpanded = true;
+      //           });
+      //         },
+      //         onTapOutside: (event) {
+      //           FocusScope.of(context).unfocus();
+      //           setState(() {
+      //             isExpanded = false;
+      //           });
+      //         },
+      //       ),
+      //     ),
+      //   ),
+      // ],
     );
   }
 }

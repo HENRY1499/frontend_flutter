@@ -17,7 +17,6 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final data = ref.watch(detailCount);
-    print(data);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
