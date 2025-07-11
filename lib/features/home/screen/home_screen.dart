@@ -16,7 +16,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreen extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final data = ref.watch(detailCount);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -43,37 +42,19 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
                 ),
               ],
             ),
-            Text(
-              'filtros',
-              style: TextStyle(color: Colors.white, fontSize: 14),
-            ),
+            // Text(
+            //   'filtros',
+            //   style: TextStyle(color: Colors.white, fontSize: 14),
+            // ),
           ],
         ),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            TotalPrice(),
-            CustomButton(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ProductsScreen()),
-                );
-              },
-              name: data <= 0 ? "Comenzar" : 'Seguir Vendiendo',
-              color: Colors.green,
-              textColor: Colors.white,
-              fontSize: 12,
-              isPressed: false,
-              py: 10.0,
-              radius: BorderRadius.circular(4),
-            ),
-            SizedBox(height: 45),
-            Employed(),
-          ],
+          children: [TotalPrice(), SizedBox(height: 15), Employed()],
         ),
       ),
     );

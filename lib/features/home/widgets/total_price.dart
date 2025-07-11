@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
+import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
 
 class TotalPrice extends ConsumerStatefulWidget {
   const TotalPrice({super.key});
@@ -34,28 +36,25 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
                   repeat: true,
                 ),
                 const SizedBox(height: 10),
-                const Text(
-                  'No hay métodos de pago registrados.',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                ),
               ],
             ),
           ),
       error: (err, _) => Center(child: Text('$err')),
       data: (data) {
         final total = data.fold(0.0, (acc, item) => acc + item.total);
-        return _builTotal(fechaFormateada, total);
+        return _builTotal(fechaFormateada, total, context, data.length);
       },
     );
   }
 }
 
-Widget _builTotal(String fecha, double total) {
+Widget _builTotal(String fecha, double total, BuildContext context, int data) {
   return Container(
     width: double.infinity,
-    height: 200,
+    height: 250,
     color: Colors.white,
-    child: Center(
+    child: Padding(
+      padding: EdgeInsets.all(15.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,18 +78,45 @@ Widget _builTotal(String fecha, double total) {
               fontSize: 16,
             ),
           ),
-          Row(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("S/"),
-              Text(
-                '${total.toStringAsFixed(2)}',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w400,
-                  fontSize: 48,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("S/"),
+                  Text(
+                    '${total.toStringAsFixed(2)}',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 48,
+                    ),
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 0,
+                  horizontal: 24.0,
+                ),
+                child: CustomButton(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ProductsScreen()),
+                    );
+                  },
+                  name: data <= 0 ? "Comenzar" : 'Seguir Vendiendo',
+                  color: Colors.green,
+                  textColor: Colors.white,
+                  fontSize: 12,
+                  isPressed: false,
+                  py: 10.0,
+                  radius: BorderRadius.circular(4),
                 ),
               ),
             ],
