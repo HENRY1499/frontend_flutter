@@ -54,7 +54,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [TotalPrice(), SizedBox(height: 15), Employed()],
+              children: [TotalPrice()],
             ),
             Positioned(top: 4, left: 130, child: FilterProduct()),
           ],

@@ -52,16 +52,13 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
 }
 
 Widget _builTotal(String fecha, double total, BuildContext context, int data) {
-  return Container(
+  return SizedBox(
     width: double.infinity,
-    height: 250,
-    color: Colors.white,
-    child: Padding(
-      padding: EdgeInsets.all(15.0),
+    child: Container(
+      color: Colors.white,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 10,
         children: [
           Text(
             fecha,
