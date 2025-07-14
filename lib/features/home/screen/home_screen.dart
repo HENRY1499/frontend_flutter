@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prueba_tecnica/features/home/widgets/TabsUser.dart';
 import 'package:prueba_tecnica/features/home/widgets/employed.dart';
 import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/features/home/widgets/total_price.dart';
@@ -42,19 +43,21 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
                 ),
               ],
             ),
-            // Text(
-            //   'filtros',
-            //   style: TextStyle(color: Colors.white, fontSize: 14),
-            // ),
+            Icon(Icons.list_alt, color: Colors.white),
           ],
         ),
       ),
 
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [TotalPrice(), SizedBox(height: 15), Employed()],
+        child: Stack(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [TotalPrice(), SizedBox(height: 15), Employed()],
+            ),
+            Positioned(top: 4, left: 130, child: FilterProduct()),
+          ],
         ),
       ),
     );

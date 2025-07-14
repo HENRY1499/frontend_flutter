@@ -101,26 +101,20 @@ Widget _builTotal(String fecha, double total, BuildContext context, int data) {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 0,
-                  horizontal: 24.0,
-                ),
-                child: CustomButton(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProductsScreen()),
-                    );
-                  },
-                  name: data <= 0 ? "Comenzar" : 'Seguir Vendiendo',
-                  color: Colors.green,
-                  textColor: Colors.white,
-                  fontSize: 12,
-                  isPressed: false,
-                  py: 10.0,
-                  radius: BorderRadius.circular(4),
-                ),
+              CustomButton(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProductsScreen()),
+                  );
+                },
+                name: data <= 0 ? "Comenzar" : 'Seguir Vendiendo',
+                color: Colors.green,
+                textColor: Colors.white,
+                fontSize: 12,
+                isPressed: false,
+                py: 10.0,
+                radius: BorderRadius.circular(4),
               ),
             ],
           ),
