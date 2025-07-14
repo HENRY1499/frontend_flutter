@@ -9,7 +9,7 @@ part of 'Category.dart';
 Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
   cid: (json['id_categories'] as num?)?.toInt(),
   name: json['name'] as String,
-  image: json['image'] as String?,
+  rol: (json['rol'] as num?)?.toInt(),
   status: (json['status'] as num?)?.toInt(),
   createdat:
       json['createdat'] == null
@@ -20,7 +20,7 @@ Category _$CategoryFromJson(Map<String, dynamic> json) => Category(
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
   'id_categories': instance.cid,
   'name': instance.name,
-  'image': instance.image,
+  'rol': instance.rol,
   'status': instance.status,
   'createdat': instance.createdat?.toIso8601String(),
 };

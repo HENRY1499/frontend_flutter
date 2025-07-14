@@ -16,6 +16,7 @@ class SalesDetailResponse {
   final double salesPrice;
   @JsonKey(name: 'pay_method')
   final String payMethod;
+  final String? subtotal;
   final DateTime createdat;
 
   final Product product; // objeto completo
@@ -23,6 +24,7 @@ class SalesDetailResponse {
   SalesDetailResponse({
     required this.quantity,
     required this.salesPrice,
+    required this.subtotal,
     required this.payMethod,
     required this.createdat,
     required this.product,

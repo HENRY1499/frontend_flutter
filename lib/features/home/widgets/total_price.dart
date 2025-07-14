@@ -23,7 +23,7 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
   Widget build(BuildContext context) {
     final ahora = DateTime.now();
     final fechaFormateada = DateFormat.yMMMMEEEEd('es_PE').format(ahora);
-    final salesAsync = ref.watch(salesProvider);
+    final salesAsync = ref.watch(detailsProvider);
     return salesAsync.when(
       loading:
           () => Center(
@@ -41,7 +41,10 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
           ),
       error: (err, _) => Center(child: Text('$err')),
       data: (data) {
-        final total = data.fold(0.0, (acc, item) => acc + item.total);
+        final total = data.fold<double>(
+          0.0,
+          (acc, item) => acc + (double.tryParse(item.subtotal ?? '0') ?? 0.0),
+        );
         return _builTotal(fechaFormateada, total, context, data.length);
       },
     );
