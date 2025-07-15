@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/features/home/widgets/TabsUser.dart';
-import 'package:prueba_tecnica/features/home/widgets/employed.dart';
-import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/features/home/widgets/total_price.dart';
-import 'package:prueba_tecnica/providers/product_provider.dart';
-import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -17,7 +13,10 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreen extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    double widthScreen = MediaQuery.of(context).size.width;
+
     return Scaffold(
+      backgroundColor: Colors.white,
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
         backgroundColor: const Color(0xFF40C4FF),
@@ -56,7 +55,11 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [TotalPrice()],
             ),
-            Positioned(top: 4, left: 130, child: FilterProduct()),
+            Positioned(
+              top: 12,
+              left: (widthScreen.floor() - 1) / 3.5,
+              child: FilterProduct(),
+            ),
           ],
         ),
       ),

@@ -7,17 +7,10 @@ class Category {
   @JsonKey(name: 'id_categories')
   final int? cid;
   final String name;
-  final int? rol;
   final int? status;
   final DateTime? createdat;
 
-  Category({
-    this.cid,
-    required this.name,
-    this.rol,
-    this.status,
-    this.createdat,
-  });
+  Category({this.cid, required this.name, this.status, this.createdat});
 
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);

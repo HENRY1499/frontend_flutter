@@ -16,6 +16,7 @@ class Product {
   @JsonKey(name: 'purchase_price')
   final String? purchasePrice;
   final int? stock;
+  final int? users;
   final Category category;
   final String? status;
   final DateTime? createdat;
@@ -26,6 +27,7 @@ class Product {
     this.salesPrice,
     this.purchasePrice,
     this.stock,
+    this.users,
     required this.category,
     this.status,
     this.createdat,

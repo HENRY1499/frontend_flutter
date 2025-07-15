@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import 'package:prueba_tecnica/features/home/widgets/employed.dart';
 import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
@@ -23,8 +24,8 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
   Widget build(BuildContext context) {
     final ahora = DateTime.now();
     final fechaFormateada = DateFormat.yMMMMEEEEd('es_PE').format(ahora);
-    final salesAsync = ref.watch(detailsProvider);
-    return salesAsync.when(
+    final detailAsync = ref.watch(detailsProvider);
+    return detailAsync.when(
       loading:
           () => Center(
             child: Column(
@@ -39,10 +40,11 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
               ],
             ),
           ),
-      error: (err, _) => Center(child: Text('$err')),
+      error: (err, _) => Center(child: Text(' $err')),
       data: (data) {
         final total = data.fold<double>(
           0.0,
+          // (acc, item) => acc + item.total,
           (acc, item) => acc + (double.tryParse(item.subtotal ?? '0') ?? 0.0),
         );
         return _builTotal(fechaFormateada, total, context, data.length);
@@ -53,9 +55,8 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
 
 Widget _builTotal(String fecha, double total, BuildContext context, int data) {
   return SizedBox(
-    width: double.infinity,
-    child: Container(
-      color: Colors.white,
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,6 +116,8 @@ Widget _builTotal(String fecha, double total, BuildContext context, int data) {
               ),
             ],
           ),
+          Employed(),
+          Employed(),
         ],
       ),
     ),

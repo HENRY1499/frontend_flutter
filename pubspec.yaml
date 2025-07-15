@@ -37,6 +37,7 @@ dependencies:
   http: ^0.13.6
   intl: ^0.19.0
   lottie: ^2.7.0
+  flutter_svg: ^2.0.7
   
 
 dev_dependencies:
@@ -75,6 +76,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/icon/
     - assets/images/
     - assets/lotties/Wallet.json
     - assets/lotties/CountTotal.json

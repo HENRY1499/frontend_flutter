@@ -38,68 +38,64 @@ class Employed extends ConsumerWidget {
               width: double.infinity,
               padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
               decoration: BoxDecoration(
-                color: Colors.white,
+                // color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(40)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey[200]!,
-                    offset: Offset(1, 1),
-                    spreadRadius: 2,
-                    blurRadius: 4,
-                  ),
-                ],
+                // boxShadow: [
+                //   BoxShadow(
+                //     color: Colors.grey[200]!,
+                //     offset: Offset(1, 1),
+                //     spreadRadius: 2,
+                //     blurRadius: 4,
+                //   ),
+                // ],
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Métodos de Pago',
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 24,
+                      fontSize: 20,
                       fontFamily: 'Montserrat',
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Wrap(
-                    spacing: 10,
-                    runSpacing: 10,
-                    alignment: WrapAlignment.spaceBetween,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children:
                         method.entries.map((method) {
                           final metodo = method.key;
                           final total = method.value;
                           return Container(
-                            width: 180,
+                            width: 190,
                             decoration: BoxDecoration(
                               border: Border.all(
                                 color:
                                     method.key == 'yape'
                                         ? Colors.purpleAccent
                                         : Colors.green,
-                                width: 3,
+                                width: 1,
                               ),
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(15),
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(20),
+                                bottomLeft: Radius.circular(20),
                               ),
                               color: Colors.white,
                             ),
                             child: Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: EdgeInsets.all(8),
                               child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     metodo.toUpperCase(),
                                     style: TextStyle(
                                       fontFamily: 'Montserrat',
-                                      fontSize: 20,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w900,
-                                      letterSpacing: 3,
+                                      letterSpacing: 2,
                                       color:
                                           method.key == 'yape'
                                               ? Colors.purple
@@ -117,7 +113,7 @@ class Employed extends ConsumerWidget {
                                                 ? Colors.purple
                                                 : Colors.green,
                                         fontFamily: 'Montserrat',
-                                        fontSize: 28,
+                                        fontSize: 24,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
