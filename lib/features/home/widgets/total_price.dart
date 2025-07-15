@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
-import 'package:prueba_tecnica/features/home/widgets/employed.dart';
+import 'package:prueba_tecnica/features/home/widgets/Payment.dart';
 import 'package:prueba_tecnica/features/products/screen/products_screen.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:prueba_tecnica/widgets/custom_Buttom.dart';
@@ -24,7 +24,7 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
   Widget build(BuildContext context) {
     final ahora = DateTime.now();
     final fechaFormateada = DateFormat.yMMMMEEEEd('es_PE').format(ahora);
-    final detailAsync = ref.watch(detailsProvider);
+    final detailAsync = ref.watch(filterData);
     return detailAsync.when(
       loading:
           () => Center(
@@ -56,7 +56,7 @@ class _TotalPrice extends ConsumerState<TotalPrice> {
 Widget _builTotal(String fecha, double total, BuildContext context, int data) {
   return SizedBox(
     child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 10),
+      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -116,8 +116,7 @@ Widget _builTotal(String fecha, double total, BuildContext context, int data) {
               ),
             ],
           ),
-          Employed(),
-          Employed(),
+          PaymentMethod(),
         ],
       ),
     ),

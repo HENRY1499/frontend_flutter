@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:prueba_tecnica/providers/product_provider.dart';
 import 'package:lottie/lottie.dart';
 
-class Employed extends ConsumerWidget {
-  const Employed({super.key});
+class PaymentMethod extends ConsumerWidget {
+  const PaymentMethod({super.key});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final method = ref.watch(sumMethodType);
@@ -36,32 +36,28 @@ class Employed extends ConsumerWidget {
             )
             : Container(
               width: double.infinity,
-              padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
-              decoration: BoxDecoration(
-                // color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(40)),
-                // boxShadow: [
-                //   BoxShadow(
-                //     color: Colors.grey[200]!,
-                //     offset: Offset(1, 1),
-                //     spreadRadius: 2,
-                //     blurRadius: 4,
-                //   ),
-                // ],
-              ),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'Métodos de Pago',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 5,
+                    children: [
+                      Icon(Icons.payments, color: Colors.green[300]),
+                      Text(
+                        'Pago',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
+                  SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children:

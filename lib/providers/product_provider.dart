@@ -20,11 +20,6 @@ final productsProvider = FutureProvider<List<Product>>((ref) async {
   final services = ref.read(productServicesProvider);
   return await services.getProducts();
 });
-// aca se llama al controlador que ya tiene el repository, y este ya tiene al servicio
-// final salesProvider = Provider<SalesController>((ref) {
-//   return SalesController(RepositorySales(SalesServices()));
-// });
-// Controller - AsyncProvider
 
 final detailsProvider =
     AsyncNotifierProvider<SalesGetController, List<SalesDetailResponse>>(
@@ -41,9 +36,29 @@ final salesProvider = AsyncNotifierProvider<SalesController, List<Sales>>(
   SalesController.new,
 );
 
+// Boton "id" - Capturamos el "id" delos botones en TabsUser
+final buttonID = StateProvider<int>((ref) => 0);
+// filter
+
+final filterData = Provider<AsyncValue<List<SalesDetailResponse>>>((ref) {
+  final id = ref.watch(buttonID);
+  final detailAsync = ref.watch(detailsProvider);
+
+  return detailAsync.when(
+    data: (d) {
+      final response =
+          id == 0 ? d : d.where((e) => e.product.users == id).toList();
+      return AsyncValue.data(response);
+    },
+
+    loading: () => const AsyncValue.loading(),
+    error: (err, stack) => AsyncValue.error(err, stack),
+  );
+});
+
 // SUMA DE TOTALES SEGUN EFECTIVO O YAPE
 final sumMethodType = Provider<Map<String, double>>((ref) {
-  final detailsAsync = ref.watch(detailsProvider);
+  final detailsAsync = ref.watch(filterData);
 
   return detailsAsync.when(
     data: (detail) {
@@ -64,16 +79,5 @@ final sumMethodType = Provider<Map<String, double>>((ref) {
     },
     error: (e, _) => {},
     loading: () => {},
-  );
-});
-
-final detailCount = Provider<int>((ref) {
-  final detailAsync = ref.watch(detailsProvider);
-  return detailAsync.when(
-    data: (detail) {
-      return detail.length;
-    },
-    error: (err, _) => 0,
-    loading: () => 0,
   );
 });

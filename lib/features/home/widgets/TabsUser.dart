@@ -20,12 +20,14 @@ class _FilterProduct extends ConsumerState<FilterProduct> {
   bool colorIcon = false;
 
   final List<String> svgIcons = [
+    'assets/icon/Vector0.svg',
     'assets/icon/Vector1.svg',
     'assets/icon/Vector2.svg',
     'assets/icon/Vector3.svg',
   ];
   @override
   Widget build(BuildContext context) {
+    final usersID = ref.read(buttonID.notifier);
     return Container(
       width: 170,
       padding: EdgeInsets.all(1),
@@ -74,9 +76,10 @@ class _FilterProduct extends ConsumerState<FilterProduct> {
                         onTap: () {
                           setState(() {
                             selectedIndex = index;
+                            usersID.state = index;
                           });
 
-                          print('print');
+                          print('print usersID.state ${usersID.state}');
                         },
                         child: SizedBox(
                           width: itemWidth,

@@ -56,7 +56,7 @@ class _HomeScreen extends ConsumerState<HomeScreen> {
               children: [TotalPrice()],
             ),
             Positioned(
-              top: 12,
+              top: 15,
               left: (widthScreen.floor() - 1) / 3.5,
               child: FilterProduct(),
             ),
