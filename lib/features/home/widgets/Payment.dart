@@ -14,7 +14,10 @@ class PaymentMethod extends ConsumerWidget {
       children: [
         method.isEmpty
             ? Center(
-              child: Column(
+              child: Wrap(
+                textDirection: TextDirection.rtl,
+                alignment: WrapAlignment.spaceBetween,
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   Lottie.asset(
                     'assets/lotties/Wallet.json',
@@ -22,13 +25,12 @@ class PaymentMethod extends ConsumerWidget {
                     height: 150,
                     repeat: true,
                   ),
-                  const SizedBox(height: 10),
                   const Text(
                     'No hay métodos de pago registrados.',
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 10,
                       fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],

@@ -83,21 +83,24 @@ Widget _builTotal(String fecha, double total, BuildContext context, int data) {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("S/"),
-                  Text(
-                    '${total.toStringAsFixed(2)}',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w400,
-                      fontSize: 48,
+              Padding(
+                padding: const EdgeInsets.all(18.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("S/"),
+                    Text(
+                      '${total.toStringAsFixed(2)}',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 48,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               CustomButton(
                 onTap: () {
