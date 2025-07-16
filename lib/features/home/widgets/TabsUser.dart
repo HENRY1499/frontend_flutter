@@ -29,8 +29,8 @@ class _FilterProduct extends ConsumerState<FilterProduct> {
   Widget build(BuildContext context) {
     final usersID = ref.read(buttonID.notifier);
     return Container(
-      width: 170,
-      padding: EdgeInsets.all(1),
+      width: 200,
+      padding: EdgeInsets.all(0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(8),
@@ -54,11 +54,11 @@ class _FilterProduct extends ConsumerState<FilterProduct> {
                   -1 + (2 / (svgIcons.length - 1)) * selectedIndex,
                   0,
                 ),
-                duration: const Duration(milliseconds: 200),
-                curve: Curves.bounceInOut,
+                duration: const Duration(milliseconds: 350),
+                curve: Curves.fastOutSlowIn,
                 child: Container(
                   width: itemWidth,
-                  height: 25,
+                  height: 30,
                   decoration: BoxDecoration(
                     color: Colors.lightBlueAccent,
                     borderRadius: BorderRadius.circular(16),
@@ -78,12 +78,10 @@ class _FilterProduct extends ConsumerState<FilterProduct> {
                             selectedIndex = index;
                             usersID.state = index;
                           });
-
-                          print('print usersID.state ${usersID.state}');
                         },
                         child: SizedBox(
                           width: itemWidth,
-                          height: 25,
+                          height: 30,
                           child: Center(
                             child: SvgPicture.asset(
                               icon,
@@ -93,8 +91,8 @@ class _FilterProduct extends ConsumerState<FilterProduct> {
                                     : Colors.white,
                                 BlendMode.srcIn,
                               ),
-                              width: 14,
-                              height: 14,
+                              width: 18,
+                              height: 18,
                             ),
                           ),
                         ),
