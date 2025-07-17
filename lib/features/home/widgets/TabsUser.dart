@@ -24,6 +24,8 @@ class _FilterProduct extends ConsumerState<FilterProduct> {
     'assets/icon/Vector1.svg',
     'assets/icon/Vector2.svg',
     'assets/icon/Vector3.svg',
+    'assets/icon/Vector4.svg',
+    'assets/icon/Vector5.svg',
   ];
   @override
   Widget build(BuildContext context) {

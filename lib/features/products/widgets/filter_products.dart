@@ -53,7 +53,7 @@ class FilterProducts extends ConsumerWidget {
           },
         );
       },
-      loading: () => const CircularProgressIndicator(),
+      loading: () => Center(child: const CircularProgressIndicator()),
       error: (err, _) => Text('Error al cargar productos: $err'),
     );
   }
